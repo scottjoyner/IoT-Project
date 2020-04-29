@@ -19,7 +19,7 @@ int i;               // iterator
 void setup()
 {
   // Attach each Servo object to a digital pin
-  servo1.attach(9, minPulse, maxPulse);
+  lightswitch.attach(9, minPulse, maxPulse);
 
   // Open the serial connection, 9600 baud
   Serial.begin(9600);
@@ -47,15 +47,6 @@ void loop()
       }
       //In the case of using multiple servos, utilizing a switch statement would be effective; however, in the case of only one servo, it is unececary.
       lightswitch.write(pos);    // move servo1 to 'pos'
-
-      if (pos<10 || pos>170)
-      {
-        pinState=HIGH;
-      }
-      else
-      {
-        pinState=LOW;
-      }
     }//startbyte ok
   }//serial avail
 }//loop
