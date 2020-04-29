@@ -20,27 +20,7 @@ def process_message(client, userdata, message):
         ser.write(chr(60))   // 60 Degree angle for the servo signifies the on position.
 
 
-# Create client
-client = mqtt.Client(client_id="closet-light")
 
-# Assign callback function
-client.on_message = process_message
-
-# Connect to broker
-client.connect(broker_address,1883,60)
-
-# Subscriber to topic
-client.subscribe("house/closet-light")
-
-# Run loop
-client.loop_forever()
-# Assign Arduino's serial port address
-usbport = '/dev/ttyACM1'
-
-# Set up serial baud rate
-ser = serial.Serial(usbport, 9600, timeout=1)
-
-        
 def move(servo, angle):
     '''Moves the specified servo to the supplied angle.
 
@@ -62,7 +42,29 @@ def move(servo, angle):
 
 
 def init():
+    # Create client
+    client = mqtt.Client(client_id="closet-light")
+
+    # Assign callback function
+    client.on_message = process_message
+
+    # Connect to broker
+    client.connect(broker_address,1883,60)
+
+    # Subscriber to topic
+    client.subscribe("house/closet-light")
+
+
+    # Assign Arduino's serial port address
+    usbport = '/dev/ttyACM0'
+
+    # Set up serial baud rate
+    ser = serial.Serial(usbport, 9600, timeout=1)
     move(1,0)
+    # Run loop
+    client.loop_forever()
+    
 
 
-#init()
+init()
+
