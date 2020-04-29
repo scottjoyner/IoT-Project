@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import serial
-import paho.mqtt.client as MQTT #import the client
+import paho.mqtt.client as mqtt #import the client
 
 # Function to process recieved message
 def process_message(client, userdata, message):
