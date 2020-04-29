@@ -42,7 +42,9 @@ client = mqtt.Client(client_id="closet-light")
 # Assign callback function
 client.on_message = process_message
 
+# IP of the primary Mosquitto server
 broker_address = "192.168.1.73"
+
 # Connect to broker
 client.connect(broker_address,1883,60)
 
@@ -55,7 +57,6 @@ usbport = '/dev/ttyACM0'
 
 # Set up serial baud rate
 ser = serial.Serial(usbport, 9600, timeout=1)
-move(1,0)
 # Run loop
 client.loop_forever()
     
