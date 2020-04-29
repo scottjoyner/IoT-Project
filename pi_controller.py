@@ -11,14 +11,9 @@ def process_message(client, userdata, message):
     print("message retain flag=",message.retain)
     msg = str(message.payload.decode("utf-8"))
     if "off" in msg:
-        ser.write(chr(255))  # This char lets the arduino know that a message starts here
-        ser.write(chr(1))    # We are referanceing servo 1, we only have one servo in this case, as I did not have more servos on hand
-        ser.write(chr(0))    # 0 Degree angle for the servo signifies the off position
+        move(1, 0)
     if "on" in msg:
-        ser.write(chr(255))  # This char lets the arduino know that a message starts here
-        ser.write(chr(1))    # We are referanceing servo 1, we only have one servo in this case, as I did not have more servos on hand
-        ser.write(chr(60))   # 60 Degree angle for the servo signifies the on position.
-
+        move(1,60)
 
 
 def move(servo, angle):
@@ -41,30 +36,28 @@ def move(servo, angle):
         print("Servo angle must be an integer between 0 and 180.\n")
 
 
-def init():
-    # Create client
-    client = mqtt.Client(client_id="closet-light")
+# Create client
+client = mqtt.Client(client_id="closet-light")
 
-    # Assign callback function
-    client.on_message = process_message
+# Assign callback function
+client.on_message = process_message
 
-    # Connect to broker
-    client.connect(broker_address,1883,60)
+broker_address = "192.168.1.73"
+# Connect to broker
+client.connect(broker_address,1883,60)
 
-    # Subscriber to topic
-    client.subscribe("house/closet-light")
+# Subscriber to topic
+client.subscribe("house/closet-light")
 
 
-    # Assign Arduino's serial port address
-    usbport = '/dev/ttyACM0'
+# Assign Arduino's serial port address
+usbport = '/dev/ttyACM0'
 
-    # Set up serial baud rate
-    ser = serial.Serial(usbport, 9600, timeout=1)
-    move(1,0)
-    # Run loop
-    client.loop_forever()
+# Set up serial baud rate
+ser = serial.Serial(usbport, 9600, timeout=1)
+move(1,0)
+# Run loop
+client.loop_forever()
     
 
-
-init()
 
