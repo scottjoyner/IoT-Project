@@ -11,13 +11,13 @@ def process_message(client, userdata, message):
     print("message retain flag=",message.retain)
     msg = str(message.payload.decode("utf-8"))
     if "off" in msg:
-        ser.write(chr(255))  // This char lets the arduino know that a message starts here
-        ser.write(chr(1))    // We are referanceing servo 1, we only have one servo in this case, as I did not have more servos on hand
-        ser.write(chr(0))    // 0 Degree angle for the servo signifies the off position
+        ser.write(chr(255))  # This char lets the arduino know that a message starts here
+        ser.write(chr(1))    # We are referanceing servo 1, we only have one servo in this case, as I did not have more servos on hand
+        ser.write(chr(0))    # 0 Degree angle for the servo signifies the off position
     if "on" in msg:
-        ser.write(chr(255))  // This char lets the arduino know that a message starts here
-        ser.write(chr(1))    // We are referanceing servo 1, we only have one servo in this case, as I did not have more servos on hand
-        ser.write(chr(60))   // 60 Degree angle for the servo signifies the on position.
+        ser.write(chr(255))  # This char lets the arduino know that a message starts here
+        ser.write(chr(1))    # We are referanceing servo 1, we only have one servo in this case, as I did not have more servos on hand
+        ser.write(chr(60))   # 60 Degree angle for the servo signifies the on position.
 
 
 
