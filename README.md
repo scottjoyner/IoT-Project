@@ -29,3 +29,48 @@ d. Any sample input and output files
 e. Any other information required to run and understand the code
 ```
 
+
+
+## Works Cited
+```
+################################################
+# Module:   servo.py
+# Created:  2 April 2008
+# Author:   Brian D. Wendt
+#   http://principialabs.com/
+# Version:  0.3
+# License:  GPLv3
+#   http://www.fsf.org/licensing/
+'''
+Provides a serial connection abstraction layer
+for use with Arduino "MultipleSerialServoControl" sketch.
+'''
+################################################
+```
+```
+/*
+ * ------------------------------
+ *   MultipleSerialServoControl
+ * ------------------------------
+ *
+ * Uses the Arduino Serial library
+ *  (http://arduino.cc/en/Reference/Serial)
+ * and the Arduino Servo library
+ *  (http://arduino.cc/en/Reference/Servo)
+ * to control multiple servos from a PC using a USB cable.
+ *
+ * Dependencies:
+ *   Arduino 0017 or higher
+ *     (http://www.arduino.cc/en/Main/Software)
+ *   Python servo.py module
+ *     (http://principialabs.com/arduino-python-4-axis-servo-control/)
+ *
+ * Created:  23 December 2009
+ * Author:   Brian D. Wendt
+ *   (http://principialabs.com/)
+ * Version:  1.1
+ * License:  GPLv3
+ *   (http://www.fsf.org/licensing/)
+ *
+ */
+```
