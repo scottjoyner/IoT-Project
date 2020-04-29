@@ -1,4 +1,4 @@
-import paho.mqtt.client as MQTT
+import paho.mqtt.client as mqtt
 
 #  function
 def connect_msg():
