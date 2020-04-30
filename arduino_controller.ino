@@ -2,7 +2,8 @@
 #include <Servo.h>
 
 // Create a Servo object for each servo
-Servo lightswitch;
+Servo servo1;
+
 
 // Common servo setup values
 int minPulse = 600;   // minimum servo position, us (microseconds)
@@ -11,7 +12,7 @@ int maxPulse = 2400;  // maximum servo position, us
 // User input for servo and position
 int userInput[3];    // raw input from serial buffer, 3 bytes
 int startbyte;       // start byte, begin reading input
-int servo;           // which servo to pulse? Gives the ability to control multiple light switches in the same room using a single arduino per room.
+int servo;           // which servo to pulse?
 int pos;             // servo angle 0-180
 int i;               // iterator
 
@@ -19,7 +20,12 @@ int i;               // iterator
 void setup()
 {
   // Attach each Servo object to a digital pin
-  lightswitch.attach(9, minPulse, maxPulse);
+  servo1.attach(9, minPulse, maxPulse);
+
+  // TO ADD SERVOS:
+  //   servo5.attach(YOUR_PIN, minPulse, maxPulse);
+  //   etc...
+
 
   // Open the serial connection, 9600 baud
   Serial.begin(9600);
@@ -40,13 +46,18 @@ void loop()
       // First byte = servo to move?
       servo = userInput[0];
       // Second byte = which position?
-      pos = userInput[1]; // Unused for this case
+      pos = userInput[1];
       // Packet error checking and recovery
       if (pos == 255) {
         servo = 255;
       }
-      //In the case of using multiple servos, utilizing a switch statement would be effective; however, in the case of only one servo, it is unececary.
-      lightswitch.write(pos);    // move servo1 to 'pos'
+
+      // Assign new position to appropriate servo
+      switch (servo) {
+      case 1:
+        servo1.write(pos);    // move servo1 to 'pos'
+        break;
+      }//switch
     }//startbyte ok
   }//serial avail
 }//loop
