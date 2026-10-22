@@ -1,9 +1,17 @@
 # CSC453: IoT-Project
 
 <!-- repo-entrypoint-guide:start -->
-> **Repository context:** This is a course IoT project documenting an automatic light-switch prototype using Arduino, Raspberry Pi, sensors, and a servo. The instructions describe a historical build, not a certified household electrical device.
-> 
-> **Safety:** Test motion-control and switching on a safe bench setup with power isolated as appropriate. Verify wiring, power supplies, permissions, and physical clearances; do not modify mains-voltage systems based only on example code.
+## Repository guide
+
+**Repository context:** This is a course IoT project documenting an automatic light-switch prototype using Arduino, Raspberry Pi, sensors, and a servo. The instructions describe a historical build, not a certified household electrical device.
+
+**Safety:** Test motion-control and switching on a safe bench setup with power isolated as appropriate. Verify wiring, power supplies, permissions, and physical clearances; do not modify mains-voltage systems based only on example code.
+
+### Find your way
+
+- [Introduction](#introduction)
+- [How To Run](#how-to-run)
+- [Works Cited](#works-cited)
 <!-- repo-entrypoint-guide:end -->
 
 ### Scott Joyner (scjoyner)
